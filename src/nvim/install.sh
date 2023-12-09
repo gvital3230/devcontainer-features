@@ -12,12 +12,11 @@ create_folder_if_not_exists() {
 	fi
 }
 
-create_folder_if_not_exists "$HOME/.local"
-cd "$HOME/.local"
+create_folder_if_not_exists "/usr/local/lib/nvim"
+cd "/usr/local/lib/nvim"
 
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
 ./nvim.appimage --appimage-extract
 
-create_folder_if_not_exists ~/.local/bin
-ln -s ~/.local/squashfs-root/AppRun ~/.local/bin/nvim
+ln -s /usr/local/lib/nvim/squashfs-root/AppRun /usr/local/bin

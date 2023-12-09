@@ -1,7 +1,7 @@
 {
   "name": "My Favorite Editor",
   "id": "nvim",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Install neovim",
   "installsAfter": [
     "ghcr.io/devcontainers/features/common-utils"
