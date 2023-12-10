@@ -1,7 +1,7 @@
 {
   "name": "Neovim",
   "id": "nvim",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Install neovim + plugins",
   "installsAfter": [
     "ghcr.io/devcontainers/features/common-utils"

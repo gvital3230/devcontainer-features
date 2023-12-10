@@ -21,8 +21,10 @@ chmod u+x nvim.appimage
 ln -s /usr/local/lib/nvim/squashfs-root/AppRun /usr/local/bin/nvim
 
 echo "Installing lazygit"
-wget https://github.com/jesseduffield/lazygit/releases/download/v0.40.2/lazygit_0.40.2_Linux_x86_64.tar.gz
-tar -xvzf lazygit_0.40.2_Linux_x86_64.tar.gz lazygit -C /usr/local/bin
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit /usr/local/bin
 
-echo "Installing fzf and ripgrep"
-apt-get install -y fzf ripgrep
+# echo "Installing fzf and ripgrep"
+# apt-get install -y fzf ripgrep
