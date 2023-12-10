@@ -19,9 +19,10 @@ cd "/usr/local/lib/nvim"
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
 ./nvim.appimage --appimage-extract
-ln -s /usr/local/lib/nvim/squashfs-root/AppRun /usr/local/bin/nvim
+ln -sf /usr/local/lib/nvim/squashfs-root/AppRun /usr/local/bin/nvim
 
-echo "Installing lazygit"
+echo ""
+echo "Installing lazygit..."
 echo "=============================================="
 # example
 # tag_name: v0.40.2
@@ -29,8 +30,10 @@ echo "=============================================="
 VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | jq -r '.tag_name | ltrimstr("v")')
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit
-sudo install lazygit /usr/local/bin
+cp lazygit /usr/local/bin
+echo "...Done"
 
+echo ""
 echo "Installing ripgrep"
 echo "=============================================="
 # example
@@ -40,8 +43,10 @@ VERSION=$(curl -s "https://api.github.com/repos/BurntSushi/ripgrep/releases/late
 curl -LO "https://github.com/BurntSushi/ripgrep/releases/latest/download/ripgrep-${VERSION}-x86_64-unknown-linux-musl.tar.gz"
 tar xf ripgrep-"${VERSION}"-*.tar.gz
 cd ripgrep-"${VERSION}"-x86_64-unknown-linux-musl
-sudo install rg /usr/local/bin
+cp rg /usr/local/bin
+echo "...Done"
 
+echo ""
 echo "Installing fd"
 echo "=============================================="
 # example
@@ -51,4 +56,5 @@ VERSION=$(curl -s "https://api.github.com/repos/sharkdp/fd/releases/latest" | jq
 curl -LO "https://github.com/sharkdp/fd/releases/latest/download/fd-${VERSION}-x86_64-unknown-linux-musl.tar.gz"
 tar xf fd-"${VERSION}"-*.tar.gz
 cd fd-"${VERSION}"-x86_64-unknown-linux-musl
-sudo install fd /usr/local/bin
+cp fd /usr/local/bin
+echo "...Done"
