@@ -1,7 +1,7 @@
 
 # Neovim (nvim)
 
-Install neovim + plugins
+Install neovim + dependencies
 
 ## Example Usage
 
@@ -10,10 +10,6 @@ Install neovim + plugins
     "ghcr.io/gvital3230/devcontainer-features/nvim:1": {}
 }
 ```
-
-
-
-
 
 ---
 
