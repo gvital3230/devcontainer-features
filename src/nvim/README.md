@@ -11,6 +11,10 @@ Install neovim + dependencies
 }
 ```
 
+
+
+
+
 ---
 
 _Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/gvital3230/devcontainer-features/blob/main/src/nvim/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
