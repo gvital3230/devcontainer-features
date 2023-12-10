@@ -18,7 +18,7 @@ cd "/usr/local/lib/nvim"
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
 ./nvim.appimage --appimage-extract
-ln -s /usr/local/lib/nvim/squashfs-root/AppRun /usr/local/bin
+ln -s /usr/local/lib/nvim/squashfs-root/AppRun /usr/local/bin/nvim
 
 echo "Installing lazygit"
 wget https://github.com/jesseduffield/lazygit/releases/download/v0.40.2/lazygit_0.40.2_Linux_x86_64.tar.gz
