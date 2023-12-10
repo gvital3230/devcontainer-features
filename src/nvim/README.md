@@ -1,7 +1,7 @@
 
-# My Favorite Editor (nvim)
+# Neovim (nvim)
 
-Install neovim
+Install neovim + plugins
 
 ## Example Usage
 
