@@ -1,25 +1,37 @@
 #!/bin/bash
+
 set -e
 
-create_folder_if_not_exists() {
-	local folder_path="$1"
+# Clean up
+rm -rf /var/lib/apt/lists/*
 
-	if [ ! -d "$folder_path" ]; then
-		mkdir -p "$folder_path"
-		echo "Folder created: $folder_path"
-	else
-		echo "Folder already exists: $folder_path"
-	fi
+if [ "$(id -u)" -ne 0 ]; then
+  echo -e 'Script must be run as root. Use sudo, su, or add "USER root" to your Dockerfile before running this script.'
+  exit 1
+fi
+
+apt_get_update() {
+  if [ "$(find /var/lib/apt/lists/* | wc -l)" = "0" ]; then
+    echo "Running apt-get update..."
+    apt-get update -y
+  fi
 }
 
-echo "Installing neovim"
-echo "=============================================="
-create_folder_if_not_exists "/usr/local/lib/nvim"
-cd "/usr/local/lib/nvim"
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
-./nvim.appimage --appimage-extract
-ln -sf /usr/local/lib/nvim/squashfs-root/AppRun /usr/local/bin/nvim
+# Checks if packages are installed and installs them if not
+check_packages() {
+  if ! dpkg -s "$@" >/dev/null 2>&1; then
+    apt_get_update
+    apt-get -y install --no-install-recommends "$@"
+  fi
+}
+
+# Install dependencies
+check_packages neovim curl ca-certificates jq
+
+# Clean up
+rm -rf /var/lib/apt/lists/*
+
+echo "Done!"
 
 echo ""
 echo "Installing lazygit..."

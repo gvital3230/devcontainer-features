@@ -1,6 +1,11 @@
 
 # Neovim (nvim)
 
+<!--toc:start-->
+- [Neovim (nvim)](#neovim-nvim)
+  - [Example Usage](#example-usage)
+<!--toc:end-->
+
 Install neovim + dependencies
 
 ## Example Usage
@@ -10,10 +15,6 @@ Install neovim + dependencies
     "ghcr.io/gvital3230/devcontainer-features/nvim:1": {}
 }
 ```
-
-
-
-
 
 ---
 
