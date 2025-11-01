@@ -1,0 +1,11 @@
+{
+  "install_nvim_jammy": {
+    "image": "ubuntu:noble",
+    "user": "vscode",
+    "features": {
+      "nvim": {
+        "version": "latest"
+      }
+    }
+  }
+}
