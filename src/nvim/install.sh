@@ -25,13 +25,16 @@ check_packages() {
   fi
 }
 
+export DEBIAN_FRONTEND=noninteractive
+export TZ=Europe/Kiev
+
 # Install dependencies
-check_packages neovim curl ca-certificates jq
+check_packages curl ca-certificates jq ninja-build gettext cmake build-essential git
 
-# Clean up
-rm -rf /var/lib/apt/lists/*
-
-echo "Done!"
+git clone --depth 1 --branch stable https://github.com/neovim/neovim
+cd neovim
+make CMAKE_BUILD_TYPE=Release
+make install
 
 echo ""
 echo "Installing lazygit..."
@@ -69,4 +72,7 @@ curl -LO "https://github.com/sharkdp/fd/releases/latest/download/fd-${VERSION}-x
 tar xf fd-"${VERSION}"-*.tar.gz
 cd fd-"${VERSION}"-x86_64-unknown-linux-musl
 cp fd /usr/local/bin
+
+# Clean up
+rm -rf /var/lib/apt/lists/*
 echo "...Done"
